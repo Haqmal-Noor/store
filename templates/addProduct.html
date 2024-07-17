@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>اضافه کردن محصول</title>
+		<link
+			rel="stylesheet"
+			href="../static/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<style>
+			.login-container {
+				max-width: 500px;
+				margin: 50px auto;
+				padding: 15px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="login-container p-5">
+				<h2 class="text-center m-3">اضافه کردن محصول</h2>
+				<form method="post" action="/add_product">
+					<div class="mb-3 row">
+						<label
+							for="exampleInputEmail1"
+							class="col-sm-4 col-form-label text-end"
+							>اسم</label
+						>
+						<div class="col-sm-8">
+							<input
+								type="text"
+								class="form-control mt-3"
+								name="name"
+								aria-describedby="emailHelp"
+								required />
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label
+							for="exampleInputNumber"
+							class="col-sm-4 col-form-label text-end"
+							>تعداد یا مجموع</label
+						>
+						<div class="col-sm-8">
+							<input
+								type="number"
+								name="number"
+								class="form-control"
+								id="exampleInputNumber"
+								required />
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label
+							for="exampleInputNumber1"
+							class="col-sm-4 col-form-label text-end"
+							>قیمت فی واحد</label
+						>
+						<div class="col-sm-8">
+							<input
+								type="number"
+								name="number1"
+								class="form-control"
+								id="exampleInputNumber1"
+								required />
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label
+							for="exampleInputUnit1"
+							class="col-sm-4 col-form-label text-end"
+							>واحد اندازه گیری</label
+						>
+						<div class="col-sm-8">
+							<select name="unit" id="unit" class="form-control">
+								<option value="1">کیلوگرام</option>
+								<option value="2">لیتر</option>
+								<option value="3">دانه</option>
+							</select>
+						</div>
+					</div>
+					<div class="mb-3 row">
+						<label
+							for="exampleInputDate"
+							class="col-sm-4 col-form-label text-end"
+							>تاریخ خرید</label
+						>
+						<div class="col-sm-8">
+							<input
+								type="date"
+								name="date"
+								class="form-control"
+								id="exampleInputDate"
+								required />
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary w-100">ثبت محصول</button>
+				</form>
+			</div>
+			<a href="{{url_for('get_products')}}">برگشت به صفحه اصلی</a>
+		</div>
+		<script>
+			const today = new Date();
+			const year = today.getFullYear();
+			const month = String(today.getMonth() + 1).padStart(2, "0");
+			const day = String(today.getDate()).padStart(2, "0");
+
+			const formatedDate = `${year}-${month}-${day}`;
+
+			document.getElementById("exampleInputDate").value = formatedDate;
+		</script>
+
+		<script src="../static/node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+		<script src="../static/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>
